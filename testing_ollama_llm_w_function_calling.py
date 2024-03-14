@@ -11,8 +11,12 @@ from langchain_core.messages import BaseMessage
 from langchain_core.tools import tool
 from langgraph.graph import END, StateGraph
 from langgraph.prebuilt import ToolExecutor, ToolInvocation
+import os
 # first taken from https://medium.com/@lifanov.a.v/integrating-langgraph-with-ollama-for-advanced-llm-applications-d6c10262dafa
-load_dotenv()
+# load_dotenv()
+os.environ["OPENAI_API_BASE"] = "http://localhost:11434/v1"
+os.environ["OPENAI_MODEL_NAME"] = "olafgeibig/nous-hermes-2-mistral:7B-DPO-Q5_K_M" #"dolphin-mixtral:8x7b-v2.7-q3_K_S" # crea"dolphincoder"# "eramax/opencodeinterpreter:ds-33b-q4"
+os.environ["OPENAI_API_KEY"] =  "NA"
 
 @tool
 def get_now(format: str = "%Y-%m-%d %H:%M:%S"):
